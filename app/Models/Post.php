@@ -206,7 +206,7 @@ class Post extends Model implements Feedable, Sluggable, HasMedia
             ->title($this->formatted_title)
             ->summary($this->formatted_text_with_external_url)
             ->updated($this->publish_date)
-            ->link($this->url)
+            ->link((! $this->isTweet() && $this->external_url) ? $this->external_url : $this->url)
             ->author('Freek Van der Herten');
     }
 
